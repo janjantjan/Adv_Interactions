@@ -1,3 +1,4 @@
+#Test commit
 # 4.043 Design Studio: Advanced Interactions
 
 This course is an overview of core principles and methodologies for the design of interaction and behavior across objects and spaces. Instruction follows the path from prototype to a deployable interactive experience, through lectures, hands-on workshops, and studio assignments. Students will gain an understanding of the overall interaction design process, with an emphasis on experience prototyping, testing, and iteration, preparing them for work in a professional environment. Topics include the history and principles of human-computer interaction; techniques for rapid behavior prototyping; user experience and testing; haptics and feedback; internet of things; and programmable materials.
