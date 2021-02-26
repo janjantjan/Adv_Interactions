@@ -29,25 +29,31 @@ class Controller {
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
                 
 
-                // now add the target
-                display.setPixel(target.position, target.playerColor);
+                // now add the whirl_center
+                display.setPixel(whirl_center.position, whirl_center.playerColor);
 
                 
-                // check if player has caught target
-                if (playerOne.position == target.position)  {
+                // check if player has caught whirl_center
+                if (playerOne.position == whirl_center.position)  {
+                    playerOne.position = 4; //reset position
+                    playerTwo.position = 25;
+                    whirl_center.position = 15;
                     playerOne.score++;              // increment score
                     this.gameState = "COLLISION";   // go to COLLISION state
                 }
                 
-                // check if other player has caught target        
-                if (playerTwo.position == target.position)  {
+                // check if other player has caught whirl_center        
+                if (playerTwo.position == whirl_center.position)  {
+                    playerOne.position = 4; //Reset position
+                    playerTwo.position = 25;
+                    whirl_center.position = 15;
                     playerTwo.score++;              // increment their score
                     this.gameState = "COLLISION";   // go to COLLISION state
                 }
 
                 break;
 
-            // This state is used to play an animation, after a target has been caught by a player 
+            // This state is used to play an animation, after a whirl_center has been caught by a player 
             case "COLLISION":
                 
                  // clear screen at frame rate so we always start fresh      
@@ -77,7 +83,7 @@ class Controller {
 
                     // We haven't hit the max score yet, keep playing    
                     } else {
-                        target.position = parseInt(random(0,displaySize));  // move the target to a new random position
+                        whirl_center.position = parseInt(15);  // move the whirl_center to a new random position
                         this.gameState = "PLAY";    // back to play state
                     }
                 } 
@@ -91,8 +97,11 @@ class Controller {
                 playerOne.score = 0;
                 playerTwo.score = 0;
 
-                // put the target somewhere else, so we don't restart the game with player and target in the same place
-                target.position = parseInt(random(1,displaySize));
+                // put the whirl_center somewhere else, so we don't restart the game with player and whirl_center in the same place
+                playerOne.position = 4;
+                playerTwo.position = 25;
+                whirl_center.position = 15;
+                
 
                 //light up w/ winner color by populating all pixels in buffer with their color
                 display.setAllPixels(score.winner);                    
@@ -109,28 +118,11 @@ class Controller {
 
 
 // This function gets called when a key on the keyboard is pressed
-function keyPressed() {
-
-    // Move player one to the left if letter A is pressed
-    if (key == 'A' || key == 'a') {
+function keyPressed(keycode) {
+    // Move player one to the left if letter spacebar is pressed
+    if (keycode==32) {
         playerOne.move(-1);
       }
     
-    // And so on...
-    if (key == 'D' || key == 'd') {
-    playerOne.move(1);
-    }    
 
-    if (key == 'J' || key == 'j') {
-    playerTwo.move(-1);
-    }
-    
-    if (key == 'L' || key == 'l') {
-    playerTwo.move(1);
-    }
-    
-    // When you press the letter R, the game resets back to the play state
-    if (key == 'R' || key == 'r') {
-    controller.gameState = "PLAY";
-    }
   }

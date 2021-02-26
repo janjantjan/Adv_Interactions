@@ -16,7 +16,7 @@ let pixelSize = 20;     // how big should they look on screen
 
 let playerOne;    // Adding 2 players to the game
 let playerTwo;
-let target;       // and one target for players to catch.
+let whirl_center;       // formerly target --> Center of pool
 
 let display;      // Aggregates our final visual output before showing it on the screen
 
@@ -34,10 +34,10 @@ function setup() {
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
 
-  playerOne = new Player(color(255,0,0), parseInt(random(0,displaySize)), displaySize);   // Initializing players
-  playerTwo = new Player(color(0,0,255), parseInt(random(0,displaySize)), displaySize);
+  playerOne = new Player(color(255,0,0), 4, displaySize);   // Initializing player
+  playerTwo = new Player(color(255,255,0), 25, displaySize);    //color changed to yellow
 
-  target = new Player(color(255,255,0), parseInt(random(0,displaySize)), displaySize);    // Initializing target using the Player class 
+  whirl_center = new Player(color(140,188,185), 15, displaySize);    // Initializing whirl_center using the Player class --> changed to light blue
 
   collisionAnimation = new Animation();     // Initializing animation
 
