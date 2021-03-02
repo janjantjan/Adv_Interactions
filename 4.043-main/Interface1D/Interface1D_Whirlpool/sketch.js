@@ -36,8 +36,8 @@ function setup() {
   playerTwo = new Player(color(255,255,0), startTwo);    
   whirl = new Whirlpool(color(140,188,185), startPool);    // Initializing whirl_center using the Player class --> changed to light blue
 
-  collisionAnimation = new Animation();     // Initializing animations << make a new animation ... lamo janice why you torture yourself like this?
-
+  collisionAnimation = new Animation(120, 35, color(255,255,0));     // Initializing animations << make a new animation ... lamo janice why you torture yourself like this?
+  whorlAnimation = new Animation(360, 8, color(140,188,185));
   controller = new Controller();            // Initializing controller
 
   score = {max:3, winner:color(0,0,0)};     // score stores max number of points, and color ... keep the best of three I guess :P
@@ -46,6 +46,7 @@ function setup() {
 
 function draw() {
 
+    frameRate(120); // 120fps
   //  a blank screen
   background(0, 0, 0);    
 

@@ -8,19 +8,9 @@ class Controller {
     constructor() {
         this.gameState = "PLAY";
 
-    }
-    
-    
+    }    
 
     update() {
-
-        for (let i = 0; i < 120; i++) {
-            if(i>119){ 
-                move();
-                clearKick();}
-            }
-
-
         // STATE MACHINE ////////////////////////////////////////////////
         // This is where your game logic lives
         /////////////////////////////////////////////////////////////////
@@ -176,6 +166,7 @@ class Controller {
                 break;
         }
     }
+  
 }
 
 

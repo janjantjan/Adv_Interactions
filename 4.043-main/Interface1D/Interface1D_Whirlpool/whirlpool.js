@@ -5,14 +5,14 @@
 class Whirlpool {
   
     constructor(_color, _position) {
-        this.playerColor = _color;
+        this.whirlColor = _color;
         this.position = _position;
         this.leftReach = 2;
         this.rightReach = 2;
     }
 
 
-
+    //not used yet
     // Move player based on keyboard input
     grow() {
 

@@ -3,7 +3,7 @@
 class Animation {
 
 
-    constructor(_frames, _pixels) {
+    constructor(_frames, _pixels, _color) {
  
         this.numberOfFrames = _frames;    // how many frames the animation has 
         this.pixels = _pixels;            // how wide the animation is
@@ -34,10 +34,10 @@ class Animation {
         let center = parseInt(this.pixels/2);
         
         // Animate to the right
-        this.animation[i][k+center] = color(255, 255, 0);//color is yellow
+        this.animation[i][k+center] = _color;
 
         // Animate to the left
-        this.animation[i][center-k] = color(255, 255, 0);
+        this.animation[i][center-k] = _color;
         
         // Increment animation pixel
         k = k+1;

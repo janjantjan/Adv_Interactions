@@ -3,10 +3,10 @@
 class Animation {
 
 
-    constructor() {
+    constructor(_frames, _pixels) {
  
-        this.numberOfFrames = 30;    // how many frames the animation has 
-        this.pixels = 30;            // how wide the animation is
+        this.numberOfFrames = _frames;    // how many frames the animation has 
+        this.pixels = _pixels;            // how wide the animation is
         
         // Multidimensional arrays in javascript are a bit silly
         // I recommend you watch this to understand what is happening next: https://www.youtube.com/watch?v=OTNpiLUSiB4
@@ -34,7 +34,7 @@ class Animation {
         let center = parseInt(this.pixels/2);
         
         // Animate to the right
-        this.animation[i][k+center] = color(255, 255, 0);
+        this.animation[i][k+center] = color(255, 255, 0);//color is yellow
 
         // Animate to the left
         this.animation[i][center-k] = color(255, 255, 0);
