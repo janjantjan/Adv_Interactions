@@ -50,6 +50,7 @@ function setup() {
 
 function draw() {
 
+  frameRate(120);
   // start with a blank screen
   background(0, 0, 0);    
 
