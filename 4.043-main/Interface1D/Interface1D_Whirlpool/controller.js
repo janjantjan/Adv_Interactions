@@ -10,8 +10,16 @@ class Controller {
 
     }
     
-    // 
+    
+
     update() {
+
+        for (let i = 0; i < 120; i++) {
+            if(i>119){ 
+                move();
+                clearKick();}
+            }
+
 
         // STATE MACHINE ////////////////////////////////////////////////
         // This is where your game logic lives
@@ -87,23 +95,23 @@ class Controller {
 
                 // play explosion animation one frame at a time.
                 // first figure out what frame to show
-                let frameToShow = collisionAnimation.currentFrame();    // this grabs number of current frame and increments it 
+                let frameToShow = whorlAnimation.currentFrame();    // this grabs number of current frame and increments it 
                 
                 // then grab every pixel of frame and put it into the display buffer
-                for(let i = 0; i < collisionAnimation.pixels; i++) {
-                    display.setPixel(i,collisionAnimation.animation[frameToShow][i]);                    
+                for(let i = 0; i < whorlAnimation.pixels; i++) {
+                    display.setPixel(i,whorlAnimation.animation[frameToShow][i]);                    
                 }
 
                 //check if animation is done and we should move on to another state
-                if (frameToShow == collisionAnimation.animation.length-1)  {
+                if (frameToShow == whorlAnimation.animation.length-1)  {
                     
                     // We've hit score max, this player wins
-                    if (playerOne.score == 1) {
+                    if (playerOne.score >= score.max) {
                         score.winner = playerOne.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
                     
                     // We've hit score max, this player wins
-                    } else if (playerTwo.score == 1) {
+                    } else if (playerTwo.score >= score.max) {
                         score.winner = playerTwo.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
 
@@ -131,12 +139,12 @@ class Controller {
                 if (frameToShow == collisionAnimation.animation.length-1)  {
                     
                     // We've hit score max, this player wins
-                    if (playerOne.score == 1) {
+                    if (playerOne.score >= score.max) {
                         score.winner = playerOne.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
                     
                     // We've hit score max, this player wins
-                    } else if (playerTwo.score == 1) {
+                    } else if (playerTwo.score >= score.max) {
                         score.winner = playerTwo.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
 
@@ -153,9 +161,9 @@ class Controller {
                 playerTwo.score = 0;
 
                 // put the whirl_center somewhere else, so we don't restart the game with player and whirl_center in the same place
-                playerOne.position = 4;
-                playerTwo.position = 25;
-                whirl_center.position = 15;
+                playerOne.position = startOne;
+                playerTwo.position = startTwo;
+                whirl_center.position = startPool;
                 
 
                 //light up w/ winner color by populating all pixels in buffer with their color
@@ -171,20 +179,13 @@ class Controller {
 }
 
 
-
 // This function gets called when a key on the keyboard is pressed
 function keyPressed() {
     if (key == "A" || key == "a") {
-      playerOne.move(-1);
-    }
-    if (key == "D" || key == "d") {
-      playerOne.move(1);
-    }
-    if (key == "J" || key == "j") {
-      playerTwo.move(-1);
+      playerOne.kick();
     }
     if (key == "L" || key == "l") {
-      playerTwo.move(1);
+      playerTwo.kick();
     }
     if (key == "R" || key == "r") {
       controller.gameState = "PLAY";
