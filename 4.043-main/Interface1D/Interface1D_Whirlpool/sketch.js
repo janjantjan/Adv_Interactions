@@ -17,7 +17,7 @@ let startTwo = 29;
 
 let playerOne;    // Left one
 let playerTwo;      //Right one
-let whirl_center;       // Center of pool
+let whirl;    
 
 let display;      // Aggregates our final visual output before showing it on the screen
 let controller;   // This is where the state machine and software logic lives
@@ -32,10 +32,9 @@ function setup() {
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
 
-  playerOne = new Player(color(255,0,0), startOne, displaySize);   // Initializing player
-  playerTwo = new Player(color(255,255,0), startTwo, displaySize);    //color changed to yellow
-
-  whirl_center = new Player(color(140,188,185), startPool, displaySize);    // Initializing whirl_center using the Player class --> changed to light blue
+  playerOne = new Player(color(255,0,0), startOne);   // Initializing player
+  playerTwo = new Player(color(255,255,0), startTwo);    
+  whirl = new Whirlpool(color(140,188,185), startPool);    // Initializing whirl_center using the Player class --> changed to light blue
 
   collisionAnimation = new Animation();     // Initializing animationS
 
