@@ -33,21 +33,42 @@ class Controller {
                 display.setPixel(whirl_center.position, whirl_center.playerColor);
 
                 
-                // check if player has caught whirl_center
+                // check if player 1 has caught whirl_center --> player one loses
                 if (playerOne.position == whirl_center.position)  {
-                    playerOne.position = 4; //reset position
-                    playerTwo.position = 25;
-                    whirl_center.position = 15;
+                    playerOne.position = startOne; //reset position
+                    playerTwo.position = startTeo;
+                    whirl_center.position = startPool;
                     playerOne.score++;              // increment score
+                    score.winner = playerTwo.playerColor;
                     this.gameState = "COLLISION";   // go to COLLISION state
                 }
                 
-                // check if other player has caught whirl_center        
+                // check if player 2 has caught whirl_center  --> player two loses   
                 if (playerTwo.position == whirl_center.position)  {
-                    playerOne.position = 4; //Reset position
-                    playerTwo.position = 25;
-                    whirl_center.position = 15;
+                    playerOne.position = startOne; //reset position
+                    playerTwo.position = startTeo;
+                    whirl_center.position = startPool;
                     playerTwo.score++;              // increment their score
+                    score.winner = playerOne.playerColor;
+                    this.gameState = "COLLISION";   // go to COLLISION state
+                }
+
+
+                if (playerTwo.position == 35)  {
+                    playerOne.position = startOne; //reset position
+                    playerTwo.position = startTeo;
+                    whirl_center.position = startPool;
+                    playerTwo.score++; 
+                    score.winner = playerTwo.playerColor;
+                    this.gameState = "COLLISION";   // go to COLLISION state
+                }
+
+                if (playerOne.position == 0)  {
+                    playerOne.position = startOne; //reset position
+                    playerTwo.position = startTeo;
+                    whirl_center.position = startPool;
+                    playerOne.score++;  
+                    score.winner = playerOne.playerColor;
                     this.gameState = "COLLISION";   // go to COLLISION state
                 }
 
@@ -72,20 +93,17 @@ class Controller {
                 if (frameToShow == collisionAnimation.animation.length-1)  {
                     
                     // We've hit score max, this player wins
-                    if (playerOne.score >= score.max) {
+                    if (playerOne.score == 1) {
                         score.winner = playerOne.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
                     
                     // We've hit score max, this player wins
-                    } else if (playerTwo.score >= score.max) {
+                    } else if (playerTwo.score == 1) {
                         score.winner = playerTwo.playerColor;   // store winning color in score.winner
                         this.gameState = "SCORE";               // go to state that displays score
 
                     // We haven't hit the max score yet, keep playing    
-                    } else {
-                        whirl_center.position = parseInt(15);  // move the whirl_center to a new random position
-                        this.gameState = "PLAY";    // back to play state
-                    }
+                    } 
                 } 
 
                 break;
@@ -118,11 +136,20 @@ class Controller {
 
 
 // This function gets called when a key on the keyboard is pressed
-function keyPressed(keycode) {
-    // Move player one to the left if letter spacebar is pressed
-    if (keycode==32) {
-        playerOne.move(-1);
-      }
-    
-
+function keyPressed() {
+    if (key == "A" || key == "a") {
+      playerOne.move(-1);
+    }
+    if (key == "D" || key == "d") {
+      playerOne.move(1);
+    }
+    if (key == "J" || key == "j") {
+      playerTwo.move(-1);
+    }
+    if (key == "L" || key == "l") {
+      playerTwo.move(1);
+    }
+    if (key == "R" || key == "r") {
+      controller.gameState = "PLAY";
+    }
   }

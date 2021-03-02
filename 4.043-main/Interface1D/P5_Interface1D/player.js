@@ -20,7 +20,7 @@ class Player {
         // increments or decrements player position
         this.position = this.position + _direction;
       
-        // if player hits the edge of display, loop around
+        // if player hits the edge of display, CORRRECT this: 
         if (this.position == -1) {
             this.position = this.displaySize - 1;
         } else if (this.position == this.displaySize) {
