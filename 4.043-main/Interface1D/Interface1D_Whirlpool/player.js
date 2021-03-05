@@ -21,10 +21,19 @@ class Player {
     }
 
     // Move player based on keyboard input
-    move() { //happens every 120 frames
-                
+    move(_direction) {//for debugging
+
         // increments or decrements player position
-        this.position = this.position + this.kickCount - 10;
+        this.position = this.position + _direction;
+    
          
     } 
+
+    swim(_direction){ // three options: swim forawrd, stay in place, pulled inward
+        if(this.kickCount>5){
+            this.position = this.position + _direction;
+        } else if(this.kickCount < 3) {
+            this.position = this.position - _direction;
+        }
+    }//alt sol (var that changes accordign to key press) (key press V. time balancing)
   }

@@ -21,8 +21,20 @@ class Controller {
                 display.clear();
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
+ 
                 display.setPixel(whirl.position, whirl.whirlColor);
                 
+                for(let i = 0; i < whirl.leftReach; i++){
+                    display.setPixel(whirl.position-(whirl.leftReach-i), whirl.whirlColor);
+                }
+
+                for(let i = 0; i < whirl.rightReach; i++){
+                    display.setPixel(whirl.position+(whirl.rightReach-i), whirl.whirlColor);
+                }
+
+                //insert move function here that executes every 1 second
+                //counter should be declared in set up
+                      
                 
                 // check if player 1 has caught whirl_center --> player two wins
                 if (playerOne.position >= (whirl.position-whirl.leftReach)) {
@@ -167,14 +179,21 @@ class Controller {
 // This function gets called when a key on the keyboard is pressed
 function keyPressed() {
     if (key == "A" || key == "a") {
-      playerOne.kick();
-      
+      playerOne.move(1);
+      playerOne.playerColor(color(0,0,0));
+    }
+    if (key == "D" || key == "d") {
+        whirl.rightReach = whirl.rightReach + 1;
+    }
+    if (key == "J" || key == "j") {
+        whirl.leftReach = whirl.leftReach + 1;
     }
     if (key == "L" || key == "l") {
-      playerTwo.kick();
-      
+      playerTwo.move(-1);
     }
     if (key == "R" || key == "r") {
       controller.gameState = "PLAY";
+      whirl.leftReach = 2;
+      whirl.rightReach = 2;
     }
-  }
+  }//some press to check varable (press/time elapsed) --> look at millis

@@ -28,11 +28,12 @@ class Animation {
         //Animation
         
         // Start from the center
-        let center = parseInt(this.pixels/2);
+        //let center = 0;
         // Animate to the right
-        this.animation[i][k+center] = _color;
+        this.animation[i][k+4] = _color;
         // Animate to the left
-        this.animation[i][center-k] = _color;
+        this.animation[i][30-k] = _color;
+        this.animation[i][17] = color(255,0,0);
         // Increment animation pixel
         k = k+1;
     } // at the end of this loop the i-th entry in animation has the pixel array.
