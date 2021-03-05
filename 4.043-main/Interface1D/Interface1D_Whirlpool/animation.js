@@ -7,13 +7,10 @@ class Animation {
  
         this.numberOfFrames = _frames;    // how many frames the animation has 
         this.pixels = _pixels;            // how wide the animation is
-        
-        // Multidimensional arrays in javascript are a bit silly
-        // I recommend you watch this to understand what is happening next: https://www.youtube.com/watch?v=OTNpiLUSiB4
-        this.animation = new Array(this.numberOfFrames);
-       
+        this.animation = new Array(this.numberOfFrames); //Stores
         this.currentFrameCount = -1;       // this tracks what frame we are currently reading
 
+        //||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||
         // The animation mimics an explosion and this variable tracks where the wave is in the display
         let k = 0;
 
@@ -21,27 +18,24 @@ class Animation {
         for (let i = 0; i < this.numberOfFrames; i++) {
             
             // since javascript can't initialize a 2D array, we need to do this
-            this.animation[i] = new Array(this.pixels);     
+            this.animation[i] = new Array(this.pixels); //filling an array with arrays of pixels
             
             // populate array with empty/black pixels
             for (let j = 0; j < this.pixels; j++) {
                 this.animation[i][j] = color(0, 0, 0);
             }
         
-        // Then populate array with animation
+        //Animation
         
         // Start from the center
         let center = parseInt(this.pixels/2);
-        
         // Animate to the right
         this.animation[i][k+center] = _color;
-
         // Animate to the left
         this.animation[i][center-k] = _color;
-        
         // Increment animation pixel
         k = k+1;
-    }
+    } // at the end of this loop the i-th entry in animation has the pixel array.
 
     }
 

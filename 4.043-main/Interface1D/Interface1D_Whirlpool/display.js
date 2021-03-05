@@ -42,6 +42,7 @@ class Display {
       for (let i =0; i< this.displaySize; i++) {
         fill(this.displayBuffer[i]);
         rect(i*this.pixelSize,0,this.pixelSize,this.pixelSize);
+        print("print2");
       }
     }
 

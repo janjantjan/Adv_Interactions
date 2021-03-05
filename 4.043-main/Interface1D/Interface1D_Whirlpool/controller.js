@@ -11,42 +11,36 @@ class Controller {
     }    
 
     update() {
-        // STATE MACHINE ////////////////////////////////////////////////
-        // This is where your game logic lives
-        /////////////////////////////////////////////////////////////////
+        
         switch(this.gameState) {
 
             // This is the main game state, where the playing actually happens
             case "PLAY":
 
-                // clear screen at frame rate so we always start fresh      
+                print(playerOne.kickCount);      
                 display.clear();
-            
-                // show all players in the right place, by adding them to display buffer
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
-    
                 display.setPixel(whirl.position, whirl.whirlColor);
-
                 
-                // check if player 1 has caught whirl_center --> player one loses
-                if (playerOne.position == (whirl.position-whirl.leftReach)) {
+                
+                // check if player 1 has caught whirl_center --> player two wins
+                if (playerOne.position >= (whirl.position-whirl.leftReach)) {
                     
                     playerOne.position = startOne; //reset position
                     playerTwo.position = startTwo;
-                    whirl_center.position = startPool;
+                    whirl.position = startPool;
 
-                    playerTwo.score++;              // increment death count
-
+                    playerTwo.score++;              
                     this.gameState = "WHORL";   // go to WHORL state
                 }
                 
-                // check if player 2 has caught whirl_center  --> player two loses   
-                if (playerTwo.position == (whirl_center.position+whirl.rightReach)) {
+                // check if player 2 has caught whirl_center  --> player one wins  
+                if (playerTwo.position <= (whirl.position+whirl.rightReach)) {
 
                     playerOne.position = startOne; //reset position
                     playerTwo.position = startTwo;
-                    whirl_center.position = startPool;
+                    whirl.position = startPool;
 
                     playerOne.score++;              // increment their score
                     
@@ -58,7 +52,7 @@ class Controller {
 
                     playerOne.position = startOne; //reset position
                     playerTwo.position = startTwo;
-                    whirl_center.position = startPool;
+                    whirl.position = startPool;
 
                     playerTwo.score++; 
                   
@@ -68,7 +62,7 @@ class Controller {
                 if (playerOne.position == 0)  {
                     playerOne.position = startOne; //reset position
                     playerTwo.position = startTwo;
-                    whirl_center.position = startPool;
+                    whirl.position = startPool;
 
                     playerOne.score++;  
                     
@@ -118,7 +112,7 @@ class Controller {
 
                 // play explosion animation one frame at a time.
                 // first figure out what frame to show
-                let frameToShow = collisionAnimation.currentFrame();    // this grabs number of current frame and increments it 
+                frameToShow = collisionAnimation.currentFrame();    // this grabs number of current frame and increments it 
                 
                 // then grab every pixel of frame and put it into the display buffer
                 for(let i = 0; i < collisionAnimation.pixels; i++) {
@@ -153,7 +147,7 @@ class Controller {
                 // put the whirl_center somewhere else, so we don't restart the game with player and whirl_center in the same place
                 playerOne.position = startOne;
                 playerTwo.position = startTwo;
-                whirl_center.position = startPool;
+                whirl.position = startPool;
                 
 
                 //light up w/ winner color by populating all pixels in buffer with their color
@@ -174,9 +168,11 @@ class Controller {
 function keyPressed() {
     if (key == "A" || key == "a") {
       playerOne.kick();
+      
     }
     if (key == "L" || key == "l") {
       playerTwo.kick();
+      
     }
     if (key == "R" || key == "r") {
       controller.gameState = "PLAY";

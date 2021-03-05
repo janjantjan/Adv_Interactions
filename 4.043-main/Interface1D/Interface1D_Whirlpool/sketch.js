@@ -22,12 +22,13 @@ let whirl;
 let display;      // Aggregates our final visual output before showing it on the screen
 let controller;   // This is where the state machine and software logic lives
 let collisionAnimation;   // Where we store and manage the collision animation
+let whorlAnimation;
 let score;        // Where we keep track of score and winner
 
 
 
 function setup() {
-
+  
   createCanvas((displaySize*pixelSize), pixelSize);     // dynamically sets canvas size
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
@@ -46,15 +47,14 @@ function setup() {
 
 function draw() {
 
-    frameRate(120); // 120fps
+  //frameRate(120); // 120fps
   //  a blank screen
   background(0, 0, 0);    
-
   // Runs state machine at determined framerate 
   controller.update();
-
   // After we've updated our states, we show the current one 
   display.show();
+
 
 
 }
