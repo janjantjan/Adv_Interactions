@@ -8,12 +8,12 @@
 
 // Sketch.js sets up the window of the game.
 
-let displaySize = 34;   // how many pixels are visible in the game
+let displaySize = 35;   // how many pixels are visible in the game
 let pixelSize = 20;     // how big should they look on screen
 var millis_start = 0;
 let startPool = 17;
 let startOne = 4;
-let startTwo = 29;
+let startTwo = 30;
 
 let playerOne;    // Left one
 let playerTwo;      //Right one

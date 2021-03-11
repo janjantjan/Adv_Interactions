@@ -19,14 +19,16 @@ class Controller {
 
                 print(playerOne.kickCount);      
                 display.clear();
+
+                display.setPixel(0, color(40,40,40));
+                display.setPixel(34, color(40,40,40));
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
                 display.setPixel(whirl.position, whirl.whirlColor);
                 playerOne.swim();
                 playerTwo.swim();
-                
-        
 
+                //fill out whirlpool display
                 for(let i = 0; i < whirl.leftReach; i++){
                     display.setPixel(whirl.position-(whirl.leftReach-i), color(140-(i*20),188,185));
                 }
@@ -35,9 +37,8 @@ class Controller {
                     display.setPixel(whirl.position+(whirl.rightReach-i), color(140-(i*20),188,185));
                 }
 
-                //insert move function here that executes every 1 second
-                //counter should be declared in set up
-                      
+                //animation?
+                //every 1 second, let some number increment and set pixel to darker blue.  
                 
                 // check if player 1 has caught whirl_center --> player two wins
                 if (playerOne.position >= (whirl.position-whirl.leftReach)) {
@@ -64,7 +65,7 @@ class Controller {
                 }
 
 
-                if (playerTwo.position == 35)  {
+                if (playerTwo.position == 34)  {
 
                     playerOne.position = startOne; //reset position
                     playerTwo.position = startTwo;
