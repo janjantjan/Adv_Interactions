@@ -25,6 +25,8 @@ class Controller {
                 playerOne.swim();
                 playerTwo.swim();
                 
+        
+
                 for(let i = 0; i < whirl.leftReach; i++){
                     display.setPixel(whirl.position-(whirl.leftReach-i), color(140-(i*20),188,185));
                 }
@@ -44,7 +46,8 @@ class Controller {
                     playerTwo.position = startTwo;
                     whirl.position = startPool;
 
-                    playerTwo.score++;              
+                    playerTwo.score++;     
+                    whorlAnimation.setActive(playerTwo.playerColor);       
                     this.gameState = "WHORL";   // go to WHORL state
                 }
                 
@@ -56,7 +59,7 @@ class Controller {
                     whirl.position = startPool;
 
                     playerOne.score++;              // increment their score
-                    
+                    whorlAnimation.setActive(playerOne.playerColor);   
                     this.gameState = "WHORL";   // go to COLLISION state
                 }
 
@@ -68,8 +71,8 @@ class Controller {
                     whirl.position = startPool;
 
                     playerTwo.score++; 
-                  
-                    this.gameState = "COLLISION";   // go to COLLISION state ... keep it
+                    whorlAnimation.setActive(playerTwo.playerColor);   
+                    //this.gameState = "COLLISION";   // go to COLLISION state ... keep it
                 }
 
                 if (playerOne.position == 0)  {
@@ -78,8 +81,8 @@ class Controller {
                     whirl.position = startPool;
 
                     playerOne.score++;  
-                    
-                    this.gameState = "COLLISION";   // go to COLLISION state
+                    whorlAnimation.setActive(playerOne.playerColor);   
+                    //this.gameState = "COLLISION";   // go to COLLISION state
                 }
 
                 break;

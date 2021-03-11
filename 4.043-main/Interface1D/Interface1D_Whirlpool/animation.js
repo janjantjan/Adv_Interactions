@@ -3,13 +3,13 @@
 class Animation {
 
 
-    constructor(_frames, _pixels, _color) {
+    constructor(_frames, _pixels,_color) {
  
         this.numberOfFrames = _frames;    // how many frames the animation has 
         this.pixels = _pixels;            // how wide the animation is
         this.animation = new Array(this.numberOfFrames); //Stores
         this.currentFrameCount = -1;       // this tracks what frame we are currently reading
-
+        this.activePixel = color(0,0,0);
         //||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||//||\\||
         // The animation mimics an explosion and this variable tracks where the wave is in the display
         let k = 0;
@@ -33,7 +33,7 @@ class Animation {
         this.animation[i][k+4] = _color;
         // Animate to the left
         this.animation[i][30-k] = _color;
-        this.animation[i][17] = color(255,0,0);
+        this.animation[i][17] = this.activePixel;
         // Increment animation pixel
         k = k+1;
     } // at the end of this loop the i-th entry in animation has the pixel array.
@@ -56,6 +56,10 @@ class Animation {
     grabPixel(_index) {
 
         return this.animation[this.currentFrameCount][_index];
+    }
+
+    setActive(_color){
+        this.activePixel = _color;
     }
 
 }
