@@ -21,7 +21,6 @@ class Controller {
                 display.clear();
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
- 
                 display.setPixel(whirl.position, whirl.whirlColor);
                 
                 for(let i = 0; i < whirl.leftReach; i++){
@@ -189,7 +188,7 @@ function keyPressed() {
         whirl.leftReach = whirl.leftReach + 1;
     }
     if (key == "L" || key == "l") {
-      playerTwo.move(-1);
+      playerTwo.move(1);
     }
     if (key == "R" || key == "r") {
       controller.gameState = "PLAY";

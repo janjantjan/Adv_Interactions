@@ -5,11 +5,12 @@
 
 class Player {
   
-    constructor(_color, _position) {
+    constructor(_color, _position, _number) {
         this.playerColor = _color;
         this.position = _position;
         this.score = 0;
         this.kickCount = 0;
+        this.playerNumber = _number; // 1=right, -1 = left
     }
 
     kick(){
@@ -24,16 +25,18 @@ class Player {
     move(_direction) {//for debugging
 
         // increments or decrements player position
-        this.position = this.position + _direction;
+        this.position = this.position + (_direction*this.playerNumber);
     
          
     } 
 
-    swim(_direction){ // three options: swim forawrd, stay in place, pulled inward
-        if(this.kickCount>5){
-            this.position = this.position + _direction;
-        } else if(this.kickCount < 3) {
-            this.position = this.position - _direction;
-        }
+    swim(){ // three options: swim forawrd, stay in place, pulled inward
+       let millis_now = millis();
+       let millis_elapsed = millis_now - millis_start;
+       if (millis_elapsed >= 1000) {
+           let gains = parseInt((kickCount-5)/2);
+           this.move(gains);
+           millis_start=0;
+       }
     }//alt sol (var that changes accordign to key press) (key press V. time balancing)
   }

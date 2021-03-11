@@ -10,7 +10,7 @@
 
 let displaySize = 34;   // how many pixels are visible in the game
 let pixelSize = 20;     // how big should they look on screen
-
+var millis_start = 0;
 let startPool = 17;
 let startOne = 4;
 let startTwo = 29;
@@ -33,8 +33,8 @@ function setup() {
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
  
-  playerOne = new Player(color(255,0,0), startOne);   // Initializing player
-  playerTwo = new Player(color(255,255,0), startTwo);    
+  playerOne = new Player(color(255,0,0), startOne, -1);   // Initializing player
+  playerTwo = new Player(color(255,255,0), startTwo, 1);    
   whirl = new Whirlpool(color(140,188,185), startPool);    // Initializing whirl_center using the Player class --> changed to light blue
 
   collisionAnimation = new Animation(12, 34, color(255,255,0));     // Initializing animations << make a new animation ... lamo janice why you torture yourself like this?
