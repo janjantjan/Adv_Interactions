@@ -22,13 +22,15 @@ class Controller {
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
                 display.setPixel(whirl.position, whirl.whirlColor);
+                playerOne.swim();
+                playerTwo.swim();
                 
                 for(let i = 0; i < whirl.leftReach; i++){
-                    display.setPixel(whirl.position-(whirl.leftReach-i), whirl.whirlColor);
+                    display.setPixel(whirl.position-(whirl.leftReach-i), color(140-(i*20),188,185));
                 }
 
                 for(let i = 0; i < whirl.rightReach; i++){
-                    display.setPixel(whirl.position+(whirl.rightReach-i), whirl.whirlColor);
+                    display.setPixel(whirl.position+(whirl.rightReach-i), color(140-(i*20),188,185));
                 }
 
                 //insert move function here that executes every 1 second
@@ -178,8 +180,7 @@ class Controller {
 // This function gets called when a key on the keyboard is pressed
 function keyPressed() {
     if (key == "A" || key == "a") {
-      playerOne.move(1);
-      playerOne.playerColor(color(0,0,0));
+      playerOne.kick();
     }
     if (key == "D" || key == "d") {
         whirl.rightReach = whirl.rightReach + 1;
@@ -188,7 +189,7 @@ function keyPressed() {
         whirl.leftReach = whirl.leftReach + 1;
     }
     if (key == "L" || key == "l") {
-      playerTwo.move(1);
+      playerTwo.kick();
     }
     if (key == "R" || key == "r") {
       controller.gameState = "PLAY";

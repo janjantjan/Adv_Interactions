@@ -11,6 +11,7 @@ class Player {
         this.score = 0;
         this.kickCount = 0;
         this.playerNumber = _number; // 1=right, -1 = left
+        this.millis_starter = millis_start;
     }
 
     kick(){
@@ -32,11 +33,13 @@ class Player {
 
     swim(){ // three options: swim forawrd, stay in place, pulled inward
        let millis_now = millis();
-       let millis_elapsed = millis_now - millis_start;
-       if (millis_elapsed >= 1000) {
-           let gains = parseInt((kickCount-5)/2);
+       let millis_elapsed = millis_now - this.millis_starter;
+       if (millis_elapsed >= 500) {
+           let gains = parseInt((this.kickCount-2)/2);
            this.move(gains);
-           millis_start=0;
+           this.millis_starter=millis();
+           this.clearKick();
        }
+
     }//alt sol (var that changes accordign to key press) (key press V. time balancing)
   }
