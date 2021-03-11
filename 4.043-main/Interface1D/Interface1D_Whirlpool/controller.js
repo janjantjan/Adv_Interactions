@@ -7,7 +7,7 @@ class Controller {
     // This is the state we start with.
     constructor() {
         this.gameState = "PLAY";
-
+        this.activePixel = color(0,0,0);
     }    
 
     update() {
@@ -47,7 +47,7 @@ class Controller {
                     whirl.position = startPool;
 
                     playerTwo.score++;     
-                    whorlAnimation.setActive(playerTwo.playerColor);       
+                    this.activePixel = playerOne.playerColor;      
                     this.gameState = "WHORL";   // go to WHORL state
                 }
                 
@@ -59,7 +59,7 @@ class Controller {
                     whirl.position = startPool;
 
                     playerOne.score++;              // increment their score
-                    whorlAnimation.setActive(playerOne.playerColor);   
+                    this.activePixel = playerTwo.playerColor;   
                     this.gameState = "WHORL";   // go to COLLISION state
                 }
 
@@ -71,7 +71,7 @@ class Controller {
                     whirl.position = startPool;
 
                     playerTwo.score++; 
-                    whorlAnimation.setActive(playerTwo.playerColor);   
+                    this.activePixel = playerOne.playerColor;
                     //this.gameState = "COLLISION";   // go to COLLISION state ... keep it
                 }
 
@@ -81,7 +81,7 @@ class Controller {
                     whirl.position = startPool;
 
                     playerOne.score++;  
-                    whorlAnimation.setActive(playerOne.playerColor);   
+                    this.activePixel = playerTwo.playerColor; 
                     //this.gameState = "COLLISION";   // go to COLLISION state
                 }
 
@@ -99,7 +99,10 @@ class Controller {
                 
                 // then grab every pixel of frame and put it into the display buffer
                 for(let i = 0; i < whorlAnimation.pixels; i++) {
-                    display.setPixel(i,whorlAnimation.animation[frameToShow][i]);                    
+                    if(i==17){display.setPixel(i,this.activePixel)}
+                    else{
+                    display.setPixel(i,whorlAnimation.animation[frameToShow][i]);    
+                    }                
                 }
 
                 //check if animation is done and we should move on to another state
