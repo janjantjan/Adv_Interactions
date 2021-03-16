@@ -12,6 +12,7 @@ class Rhythm {//fusion of a player and animation
         this.millis_starter = millis_start;
         this.rhythmSupAnimation = [];
         this.rhythmAnimation = [];
+        this.activeBeat = false;
 
         //fill the rhythm animation array:
         for(let i = 0; i< this.tempoMark*24; i++){
@@ -49,18 +50,18 @@ class Rhythm {//fusion of a player and animation
         
     }
 
-    rhythmAnimatorL(){ //returns an array of 60s and 0s that is 18 long
+    rhythmAnimatorL(){ //returns an array of 60s and 0s that is 12 long
    
         for (let i = 0; i < 12; i++){// if more than span, we stop filling
                
             if (i< (this.currentTick+1)){
-                
                 this.rhythmAnimation[i] = this.rhythmSupAnimation[this.currentTick-i];
             }
             else{
                 this.rhythmAnimation[i] = 0;
             }
         }
+
         return this.rhythmAnimation;
     }
 
@@ -75,6 +76,13 @@ class Rhythm {//fusion of a player and animation
             else{
                 this.rhythmAnimation[i] = 0;
             }
+        }
+        if (this.rhythmAnimation[11]==this.rhythmColor||this.rhythmAnimation[10]==this.rhythmColor){
+            this.activeBeat=true;
+
+        }
+        else{
+            this.activeBeat=false;
         }
         return this.rhythmAnimation;
     }

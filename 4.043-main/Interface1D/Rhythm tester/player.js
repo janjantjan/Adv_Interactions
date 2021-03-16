@@ -24,7 +24,7 @@ class Player {
     glowCheck(){
         let millis_now = millis();
         let millis_elapsed = millis_now - this.millis_starter;
-        if (millis_elapsed >= 300) {
+        if (millis_elapsed >= 200) {
            this.glowStatus = false;
            this.millis_starter=millis();
            //print(this.glowStatus);

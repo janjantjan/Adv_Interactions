@@ -19,22 +19,24 @@ class Controller {
       rhythmOne.rhythmCycler();
       
       
-
+//draws rhythm in
       let animationArrayOne = rhythmOne.rhythmAnimatorL();
       for (let i = 0; i < animationArrayOne.length; i++){
         let coloration1 = color(animationArrayOne[i],animationArrayOne[i],animationArrayOne[i]);
         display.setPixel(i, coloration1);
       }
       
-      
+//drawer player location    
     display.setPixel(playerOne.position, playerOne.playerColor);
-      
+
+//color glow on press
       if(playerOne.glowCheck()){
-          print(display.displayBuffer[playerOne.position-1]);
-          if(display.displayBuffer[playerOne.position-1]==color(80,80,80)||display.displayBuffer[playerOne.position-1]==color(80,80,80)){
+          //print(rhythmOne.activeBeat);
+          if(rhythmOne.activeBeat){
         display.setPixel(playerOne.position-2, color(0,100,0));
         display.setPixel(playerOne.position-1, color(0,150,0));
       }else{
+        print(rhythmOne.activeBeat);
         display.setPixel(playerOne.position-2, color(0,100,100));
         display.setPixel(playerOne.position-1, color(0,150,150));
       }
@@ -46,9 +48,8 @@ class Controller {
     function keyPressed() {
         if (key == "s" || key == "S") {
           playerOne.glow();
-          print('boop');
-          //display.setPixel(playerOne.position-2, color(200,0,0));
-        //display.setPixel(playerOne.position-1, color(220,0,0));
+          
+          
         }
         
       }//some press to check varable (press/time elapsed) --> look at millis

@@ -19,7 +19,7 @@ function setup() {
   createCanvas((displaySize*pixelSize), pixelSize);     // dynamically sets canvas size
 
   display = new Display(displaySize, pixelSize);        //Initializing the display
-  rhythmOne = new Rhythm(60, 2, rhythmUno);
+  rhythmOne = new Rhythm(120, 2, rhythmUno);
   playerOne = new Player(color(255,0,0), startOne);
   controller = new Controller();  
   

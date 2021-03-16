@@ -20,9 +20,7 @@ class Controller {
                 print(playerOne.kickCount);      
                 display.clear();
 
-                display.setPixel(0, color(60,60,60));
-                display.setPixel(32, color(60,60,60));
-                display.setPixel(30, color(60,60,60));
+               
                 display.setPixel(playerOne.position, playerOne.playerColor);
                 display.setPixel(playerTwo.position, playerTwo.playerColor);
                 display.setPixel(whirl.position, whirl.whirlColor);
