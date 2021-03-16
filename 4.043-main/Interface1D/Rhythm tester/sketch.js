@@ -28,7 +28,7 @@ function setup() {
 
 function draw() {
 
-  frameRate(30); // 120fps
+  frameRate(60); // 120fps
   //  a blank screen
   background(0, 0, 0);    
   // Runs state machine at determined framerate 

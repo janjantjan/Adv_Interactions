@@ -30,12 +30,17 @@ class Controller {
     display.setPixel(playerOne.position, playerOne.playerColor);
       
       if(playerOne.glowCheck()){
-          
-        display.setPixel(playerOne.position-2, color(100,0,0));
-        display.setPixel(playerOne.position-1, color(150,0,0));
+          print(display.displayBuffer[playerOne.position-1]);
+          if(display.displayBuffer[playerOne.position-1]==color(80,80,80)||display.displayBuffer[playerOne.position-1]==color(80,80,80)){
+        display.setPixel(playerOne.position-2, color(0,100,0));
+        display.setPixel(playerOne.position-1, color(0,150,0));
+      }else{
+        display.setPixel(playerOne.position-2, color(0,100,100));
+        display.setPixel(playerOne.position-1, color(0,150,150));
       }
                         
     }
+}
 }
 
     function keyPressed() {
