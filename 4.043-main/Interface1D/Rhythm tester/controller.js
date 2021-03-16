@@ -16,20 +16,35 @@ class Controller {
       display.clear();
       //new pixel gets put at 1, next pixel is shifted to 2. 
 
-      let pixelNow = rhythmOne.rhythmCycler(); //refreshes the index to call
-      print(pixelNow + "currentPix");
-
+      rhythmOne.rhythmCycler();
       
-        for (let i = 0; i<pixelNow+1; i++){
-            if (i<20){
-                display.setPixel(i, rhythmOne.grabPixel(pixelNow-i+1));
-                print(rhythmOne.grabPixel(pixelNow-i+1));
-            }
-            else {
-                display.setPixel(i, color(0,0,0));
-            }
-    
+      
+
+      let animationArrayOne = rhythmOne.rhythmAnimatorL();
+      for (let i = 0; i < animationArrayOne.length; i++){
+        let coloration1 = color(animationArrayOne[i],animationArrayOne[i],animationArrayOne[i]);
+        display.setPixel(i, coloration1);
+      }
+      
+      
+    display.setPixel(playerOne.position, playerOne.playerColor);
+      
+      if(playerOne.glowCheck()){
+          
+        display.setPixel(playerOne.position-2, color(100,0,0));
+        display.setPixel(playerOne.position-1, color(150,0,0));
+      }
                         
     }
 }
-}
+
+    function keyPressed() {
+        if (key == "s" || key == "S") {
+          playerOne.glow();
+          print('boop');
+          //display.setPixel(playerOne.position-2, color(200,0,0));
+        //display.setPixel(playerOne.position-1, color(220,0,0));
+        }
+        
+      }//some press to check varable (press/time elapsed) --> look at millis
+

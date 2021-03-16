@@ -46,7 +46,10 @@ class Display {
       }
     }
 
-
+    grabPixel(_index) {
+      return this.displayBuffer[_index];
+      print('pull');
+    }
     
     // Let's empty the display before we start adding things to it again
     clear() {
