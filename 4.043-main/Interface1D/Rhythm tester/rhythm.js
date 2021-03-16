@@ -13,12 +13,23 @@ class Rhythm {//fusion of a player and animation
         this.millis_starter = millis_start;
         this.rhythmAnimation = [];
 
-        
+        //fill the rhythm animation array:
+        for(let i = 0; i< this.tempoMark*24; i++){
+            if(this.rhythmArray[i] == 0){
+                this.rhythmAnimation[i] = color(0,0,0);
+                print('BLK'+this.rhythmArray[i]);
+                
+            }
+            else { this.rhythmAnimation[i] = color(60,60,60);
+                print('GRY'+this.rhythmArray[i]);}
+            
+        }
         
     }
 
-    rhythmCycler(){//cycles every tickTime (mS) and should be called by update(). Returns current pixel status.
+    rhythmCycler(){//cycles every tickTime (mS) and should be called by update(). Returns index of pixelarray that should be called.
         let millis_now = millis();
+        print(this.tickTime);
         let millis_elapsed = millis_now - this.millis_starter;
         if (millis_elapsed >= this.tickTime) {
             if(this.currentTick >= (this.tempoMark*24)){
@@ -26,14 +37,27 @@ class Rhythm {//fusion of a player and animation
             } 
             else {
                     this.currentTick = this.currentTick+1;
-                    if (this.rhythmArray(this.currentTick) == 1){
-                        this.tickStatus = true;
-                    } else { this.tickStatus = false;}
+                
                 }
         }
-        return this.rhthymArray(this.currentTick);
+       
+
+        for (let i = 0; i<this.currentTick+1; i++){
+            if (i<20){
+                display.setPixel(i, rhythmOne.grabPixel(this.currentTick-i+1));
+                
+            }
+            else {
+                display.setPixel(i, color(0,0,0));
+            }    
+                        
+        }
     }
- 
+
+
+    grabPixel(_index){
+        return this.rhythmAnimation[_index];
+    }
    
 
 }
