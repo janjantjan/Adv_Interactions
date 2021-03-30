@@ -61,7 +61,7 @@ class Rhythm {//fusion of a player and animation
                 this.rhythmAnimation[i] = 0;
             }
 
-            if (this.rhythmAnimation[11]==this.rhythmColor||this.rhythmAnimation[10]==this.rhythmColor){
+            if (this.rhythmAnimation[11]==this.rhythmColor){//||this.rhythmAnimation[10]==this.rhythmColor
                 this.activeBeat=true;
     
             }
@@ -85,7 +85,7 @@ class Rhythm {//fusion of a player and animation
                 this.rhythmAnimation[i] = 0;
             }
         }
-        if (this.rhythmAnimation[0]==this.rhythmColor||this.rhythmAnimation[1]==this.rhythmColor){
+        if (this.rhythmAnimation[1]==this.rhythmColor){//||this.rhythmAnimation[1]==this.rhythmColor
             this.activeBeat=true;
 
         }

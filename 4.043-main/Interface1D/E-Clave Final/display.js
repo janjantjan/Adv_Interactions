@@ -42,13 +42,13 @@ class Display {
       for (let i =0; i< this.displaySize; i++) {
         fill(this.displayBuffer[i]);
         rect(i*this.pixelSize,0,this.pixelSize,this.pixelSize);
-        print("print2");
+        
       }
     }
 
     grabPixel(_index) {
       return this.displayBuffer[_index];
-      print('pull');
+      
     }
     
     // Let's empty the display before we start adding things to it again

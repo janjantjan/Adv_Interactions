@@ -40,13 +40,13 @@ class Controller {
       if(playerOne.glowCheck()){
           //print(rhythmOne.activeBeat);
           if(rhythmOne.activeBeat){
-            display.setPixel(playerOne.position-2, color(50,0,0));
+            display.setPixel(playerOne.position-3, color(50,0,0));
             display.setPixel(playerOne.position-2, color(100,0,0));
         display.setPixel(playerOne.position-1, color(150,0,0));
       }else{
-        print(rhythmOne.activeBeat);
-        display.setPixel(playerOne.position-2, color(0,100,100));
-        display.setPixel(playerOne.position-1, color(0,150,150));
+        //print(rhythmOne.activeBeat);
+        display.setPixel(playerOne.position-2, color(20,20,20));
+        display.setPixel(playerOne.position-1, color(40,40,40));
       }
                         
     }
@@ -54,13 +54,13 @@ class Controller {
     if(playerTwo.glowCheck()){
       //print(rhythmOne.activeBeat);
       if(rhythmTwo.activeBeat){
-        display.setPixel(playerTwo.position+2, color(50,50,0));
+        display.setPixel(playerTwo.position+3, color(50,50,50));
         display.setPixel(playerTwo.position+2, color(100,100,0));
     display.setPixel(playerTwo.position+1, color(150,150,0));
   }else{
-    print(rhythmTwo.activeBeat);
-    display.setPixel(playerTwo.position+2, color(0,100,100));
-    display.setPixel(playerTwo.position+1, color(0,150,150));
+    //print(rhythmTwo.activeBeat);
+    display.setPixel(playerTwo.position+2, color(20,20,20));
+    display.setPixel(playerTwo.position+1, color(40,40,40));
   }
                     
 }

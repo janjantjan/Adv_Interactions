@@ -21,7 +21,7 @@ bool hit = false;
 int led = 7;
 #define ON 1
 #define OFF 0
-bool keyA = OFF;
+bool keyS = OFF;
 
   
 void setup(void) {
@@ -107,15 +107,15 @@ void loop() {
 
 
  //Start keyboard code
-  if (hit && keyA == OFF)
-  {A
-    keyA = ON;
-    Keyboard.write(65);
-  }AA
+  if (hit && keyS == OFF)
+  {
+    keyS = ON;
+    Keyboard.write(83);
+  }
   if (hit==false)
   {
-    keyA = OFF;
-  }AAAA
+    keyS = OFF;
+  }
  
 
   
